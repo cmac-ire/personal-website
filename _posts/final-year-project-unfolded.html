@@ -68,8 +68,8 @@
         </nav>
     </header>
 
- <!-- Main content container -->
- <div class="section-container">
+<!-- Main content container -->
+<div class="section-container">
     <div class="container">
         <div class="row resume-row-label">
             <div class="col-xs-12">
@@ -101,21 +101,16 @@
 
                     <div style="text-align: center;">
                         <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">System in Action</h2>
-                        <video controls>
+                        <video controls style="max-width: 80%; height: auto;">
                             <source src="../videos/system-in-action.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <br>
 
-                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Machine Learning Algorithm</h2>
-                    <p style="text-align: left; margin-top: 10px;">
-                        The core of the project is a machine learning algorithm developed using Python, TensorFlow, and Keras. The algorithm classifies parts into 'pass' and 'fail' categories. The camera captures live images then sends them over FTP, which are then processed and classified by the Raspberry Pi running the FTP server. The classified data is sent back to the Siemens PLC using Python Snap7 library, which updates the system accordingly.
-                    </p>
-
                     <div style="text-align: center;">
                         <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Algorithm Demonstration</h2>
-                        <video controls>
+                        <video controls style="max-width: 80%; height: auto;">
                             <source src="../videos/algortihm-demo.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -147,7 +142,7 @@
 
                     <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Project Poster</h2>
                     <div style="text-align: center;">
-                        <img class="responsive-image" src="../img/fyp/poster.png" alt="Project Poster">
+                        <img id="poster" class="responsive-image" src="../img/fyp/poster.png" alt="Project Poster" style="max-width: 80%; height: auto;">
                     </div>
                     <br>
 
@@ -177,6 +172,21 @@
         </div>
     </div>
 </div>
+
+<!-- Include Viewer.js CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/viewerjs/dist/viewer.min.css">
+<script src="https://unpkg.com/viewerjs/dist/viewer.min.js"></script>
+
+<script>
+    // Initialize the interactive poster
+    const image = document.getElementById('poster');
+    const viewer = new Viewer(image, {
+        inline: true,
+        viewed() {
+            viewer.zoomTo(1);
+        },
+    });
+</script>
 
     <!-- Footer -->
     <div class="footer-container">
