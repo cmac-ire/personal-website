@@ -2,7 +2,7 @@
 
 ***https://cmac.vercel.app***
 
-![Project Logo](readme.png)
+![Project Logo](readme.jpg)
 
 Templates used:
 
