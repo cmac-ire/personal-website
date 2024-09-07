@@ -13,147 +13,170 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" href="../img/NFT.ico" type="image/x-icon">
     <script src="../js/main.js"></script>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
     
-    <!-- Custom styles -->
-    <style>
-        .header-title {
-            text-align: center;
-            font-size: 2.5em;
-            color: #1142C9;
-            margin-top: 20px;
-        }
-
-        .content-section {
-            margin: 20px auto;
-            max-width: 1000px;
-            text-align: left;
+     <!-- Styling for navigation links, buttons, and footer -->
+     <style>
+        .previous-link, .next-link {
             font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .content-section h2 {
-            font-size: 1.8em;
-            color: #333;
-            margin-top: 30px;
-            font-weight: bold;
-        }
-
-        .content-section p, .content-section ul {
-            margin-top: 10px;
-        }
-
-        .video-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .video-container video {
-            width: 80%;
-            max-width: 800px;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .document-container {
-            margin: 40px auto;
-            text-align: center;
-        }
-
-        .document-container a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #1142C9;
-            color: #fff;
+            color: rgba(17, 66, 201, 1);
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
+            margin-right: 10px;
         }
 
-        .poster-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .poster-container img {
-            width: 80%;
-            max-width: 800px;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+        .next-link {
+            margin-right: 0;
         }
 
         .footer-container {
-            text-align: center;
-            margin-top: 50px;
+            text-align: left;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            height: 600px;
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header with navigation bar -->
     <header>
-        <h1 class="header-title">Machine Learning Part Classification System</h1>
-        <p style="text-align: center;">By Cormac Farrelly</p>
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../index.html" title="01: Home">01: Home</a></li>
+                        <li><a href="../resume.html" title="02: CV">02: Resume</a></li>
+                        <li><a href="../blog.html" title="03: Blog">03: Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Main content -->
-    <div class="content-section">
-        <h2>Project Overview</h2>
-        <p>This project is part of the Technological University of the Shannon (TUS) Industrial Automation & Robotics Engineering course. The objective is to design and implement a machine learning system that integrates seamlessly with industrial automation to classify parts.</p>
+ <!-- Main content container -->
+ <div class="section-container">
+    <div class="container">
+        <div class="row resume-row-label">
+            <div class="col-xs-12">
+                <div class="template-example">
+                    <h1 class="template-title-example">Machine Learning Part Classification System</h1>
+                    <p style="text-align: center;">By Cormac Farrelly</p>
+                    <br>
 
-        <h2>Technological Components</h2>
-        <p>The system is built around key technological components:</p>
-        <ul>
-            <li><strong>Cognex Insight 7801 Camera</strong> for capturing images of parts and utilizing FTP.</li>
-            <li><strong>Siemens S7-1200 1215 DC/DC/DC PLC</strong> for controlling the automation process - the brain of the system.</li>
-            <li><strong>Raspberry Pi 4</strong> for processing images, running the machine learning algorithm, and running the FTP server.</li>
-            <li><strong>Servo Motor and Sensors</strong> for handling the movement of parts on the conveyor belt.</li>
-        </ul>
+                    <p style="text-align: left; margin-top: 10px;">
+                        <em>“Automation does not need to be our enemy. I think machines can make life easier for men, if men do not let the machines dominate them.” -John F. Kennedy</em>
+                    </p>
+                    <br>
+                    
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Project Overview</h2>
+                    <p style="text-align: left; margin-top: 10px;">
+                        This project is part of the Technological University of the Shannon (TUS) Industrial Automation & Robotics Engineering course. The objective is to design and implement a machine learning system that integrates seamlessly with industrial automation to classify parts.
+                    </p>
 
-        <div class="video-container">
-            <h2>System in Action</h2>
-            <video controls>
-                <source src="../videos/system-in-action.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Technological Components</h2>
+                    <p style="text-align: left; margin-top: 10px;">
+                        The system is built around key technological components:
+                    </p>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li><strong>Cognex Insight 7801 Camera</strong> for capturing images of parts and utilizing FTP.</li>
+                        <li><strong>Siemens S7-1200 1215 DC/DC/DC PLC</strong> for controlling the automation process - the brain of the system.</li>
+                        <li><strong>Raspberry Pi 4</strong> for processing images, running the machine learning algorithm, and running the FTP server.</li>
+                        <li><strong>Servo Motor and Sensors</strong> for handling the movement of parts on the conveyor belt.</li>
+                    </ul>
+
+                    <div style="text-align: center;">
+                        <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">System in Action</h2>
+                        <video controls>
+                            <source src="../videos/system-in-action.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <br>
+
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Machine Learning Algorithm</h2>
+                    <p style="text-align: left; margin-top: 10px;">
+                        The core of the project is a machine learning algorithm developed using Python, TensorFlow, and Keras. The algorithm classifies parts into 'pass' and 'fail' categories. The camera captures live images then sends them over FTP, which are then processed and classified by the Raspberry Pi running the FTP server. The classified data is sent back to the Siemens PLC using Python Snap7 library, which updates the system accordingly.
+                    </p>
+
+                    <div style="text-align: center;">
+                        <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Algorithm Demonstration</h2>
+                        <video controls>
+                            <source src="../videos/algortihm-demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <br>
+
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Challenges and Solutions</h2>
+                    <p style="text-align: left; margin-top: 10px;">
+                        Throughout the project, several challenges were encountered, including:
+                    </p>
+                    <ul style="text-align: left; margin-top: 10px;">
+                        <li>Developing a reliable machine learning algorithm for real-time classification.</li>
+                        <li>Integrating hardware components like the PLC and Raspberry Pi.</li>
+                        <li>Establishing seamless communication between the camera, Raspberry Pi, and PLC via FTP and Snap7.</li>
+                    </ul>
+                    <p style="text-align: left; margin-top: 10px;">
+                        Each challenge was addressed with a systematic approach, resulting in a robust and functional system.
+                    </p>
+
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Thesis</h2>
+                    <p style="text-align: left; margin-top: 10px;">
+                        The thesis documents the entire journey of the project, from initial concept to final implementation. It provides an in-depth analysis of the challenges, solutions, and the overall impact of integrating machine learning into industrial automation.
+                    </p>
+
+                    <object data="../docs/Thesis_CF_K00259724.pdf" type="application/pdf" style="width: 100%; height: 800px;">
+                        <p>It appears you don't have a PDF plugin for this browser. You can <a href="../docs/Thesis_CF_K00259724.pdf">download the Thesis PDF file.</a></p>
+                    </object>
+                    <br>
+
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Project Poster</h2>
+                    <div style="text-align: center;">
+                        <img class="responsive-image" src="../img/fyp/poster.png" alt="Project Poster">
+                    </div>
+                    <br>
+
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">Conclusion and Reflection</h2>
+                    <p style="text-align: left; margin-top: 10px;">
+                        This project marks a significant milestone in my journey as an Industrial Automation & Robotics Engineering student. It highlights the potential of machine learning in automation and sets the stage for future innovations in the industry.
+                    </p>
+                    <br>
+
+                    <h2 style="text-align: left; font-weight: bold; font-size: 28px; color: black;">To be continued...</h2>
+                    <p style="text-align: left; margin-top: 20px;">
+
+                    <div class="footer-container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-6 text-left">
+                                    <a href="my-own-algorithm-blog-post.html" class="previous-link"><strong>Artificial Intelligence: Developing a custom algorithm</strong></a>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <a href="final-year-project-unfolded.html" class="next-link"><strong>Final Year Project - Unfolded</strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <h2>Machine Learning Algorithm</h2>
-        <p>The core of the project is a machine learning algorithm developed using Python, TensorFlow, and Keras. The algorithm classifies parts into 'pass' and 'fail' categories. The camera captures live images then sends them over FTP, which are then processed and classified by the Raspberry Pi running the FTP server. The classified data is sent back to the Siemens PLC using Python Snap7 library, which updates the system accordingly.</p>
-
-        <div class="video-container">
-            <h2>Algorithm Demonstration</h2>
-            <video controls>
-                <source src="../videos/algortihm-demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-        <h2>Challenges and Solutions</h2>
-        <p>Throughout the project, several challenges were encountered, including:</p>
-        <ul>
-            <li>Developing a reliable machine learning algorithm for real-time classification.</li>
-            <li>Integrating hardware components like the PLC and Raspberry Pi.</li>
-            <li>Establishing seamless communication between the camera, Raspberry Pi, and PLC via FTP and Snap7.</li>
-        </ul>
-        <p>Each challenge was addressed with a systematic approach, resulting in a robust and functional system.</p>
-
-        <h2>Thesis</h2>
-        <p>The thesis documents the entire journey of the project, from initial concept to final implementation. It provides an in-depth analysis of the challenges, solutions, and the overall impact of integrating machine learning into industrial automation.</p>
-
-        <object data="../docs/Thesis_CF_K00259724.pdf" type="application/pdf" style="width: 100%; height: 800px;">
-            <p>It appears you don't have a PDF plugin for this browser. You can <a href="../docs/Thesis_CF_K00259724.pdf">download the Thesis PDF file.</a></p>
-        </object>
-
-        <h2>Project Poster</h2>
-        <div class="poster-container">
-            <img src="../img/fyp/poster.png" alt="Project Poster">
-        </div>
-
-        <h2>Conclusion and Reflection</h2>
-        <p>This project marks a significant milestone in my journey as an Industrial Automation & Robotics Engineering student. It highlights the potential of machine learning in automation and sets the stage for future innovations in the industry.</p>
     </div>
+</div>
 
     <!-- Footer -->
     <div class="footer-container">
