@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Part Classification System - Industrial Automation Project - Cormac Farrelly</title>
+    <meta name="description" content="Final Year Project by Cormac Farrelly on integrating machine learning with industrial automation.">
+    <meta name="keywords" content="industrial automation, robotics, machine learning, TensorFlow, Keras, automation, AI, Cormac Farrelly">
+    <meta name="author" content="Cormac Farrelly">
+    <meta name="robots" content="index, follow">
+    
+    <!-- External stylesheets and scripts -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../img/NFT.ico" type="image/x-icon">
+    <script src="../js/main.js"></script>
+    
+    <!-- Custom styles -->
+    <style>
+        .header-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #1142C9;
+            margin-top: 20px;
+        }
+
+        .content-section {
+            margin: 20px auto;
+            max-width: 1000px;
+            text-align: left;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .content-section h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .content-section p, .content-section ul {
+            margin-top: 10px;
+        }
+
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .video-container video {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .thesis-container {
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .thesis-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1142C9;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .poster-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .poster-container img {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .footer-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1 class="header-title">Machine Learning Part Classification System</h1>
+        <p style="text-align: center;">By Cormac Farrelly</p>
+    </header>
+
+    <!-- Main content -->
+    <div class="content-section">
+        <h2>Project Overview</h2>
+        <p>This project is part of the Technological University of the Shannon (TUS) Industrial Automation & Robotics Engineering course. The objective is to design and implement a machine learning system that integrates seamlessly with industrial automation to classify parts.</p>
+
+        <h2>Technological Components</h2>
+        <p>The system is built around key technological components:</p>
+        <ul>
+            <li><strong>Cognex Insight 7801 Camera</strong> for capturing images of parts and utilising FTP.</li>
+            <li><strong>Siemens S7-1200 1215 DC/DC/DC PLC</strong> for controlling the automation process - the brain of the system.</li>
+            <li><strong>Raspberry Pi 4</strong> for processing images, running the machine learning algorithm & running the FTP server.</li>
+            <li><strong>Servo Motor and Sensors</strong> for handling the movement of parts on the conveyor belt.</li>
+        </ul>
+
+        <div class="video-container">
+            <h2>System in Action</h2>
+            <video controls>
+                <source src="../videos/system-in-action.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <h2>Machine Learning Algorithm</h2>
+        <p>The core of the project is a machine learning algorithm developed using Python, TensorFlow, and Keras. The algorithm classifies parts into 'pass' and 'fail' categories. The camera captures live images then sends them over FTP, which are then processed and classified by the Raspberry Pi running the FTP server. The classified data is sent back to the Siemens PLC using Python Snap7 library, which updates the system accordingly.</p>
+
+        <div class="video-container">
+            <h2>Algorithm Demonstration</h2>
+            <video controls>
+                <source src="../videos/algorithm-demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <h2>Challenges and Solutions</h2>
+        <p>Throughout the project, several challenges were encountered, including:</p>
+        <ul>
+            <li>Developing a reliable machine learning algorithm for real-time classification.</li>
+            <li>Integrating hardware components like the PLC and Raspberry Pi.</li>
+            <li>Establishing seamless communication between the camera, Raspberry Pi, and PLC via FTP and Snap7.</li>
+        </ul>
+        <p>Each challenge was addressed with a systematic approach, resulting in a robust and functional system.</p>
+
+        <h2>Thesis</h2>
+        <div class="thesis-container">
+            <a href="../docs/Thesis_CF_K00259724.pdf" target="_blank">Download Full Thesis (PDF)</a>
+        </div>
+
+        <h2>Project Poster</h2>
+        <div class="poster-container">
+            <img src="../img/fyp/poster.png" alt="Project Poster">
+        </div>
+
+        <h2>Conclusion and Reflection</h2>
+        <p>This project marks a significant milestone in my journey as an Industrial Automation & Robotics Engineering student. It highlights the potential of machine learning in automation and sets the stage for future innovations in the industry.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p>© Cormac Farrelly 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
