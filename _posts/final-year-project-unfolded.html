@@ -169,21 +169,6 @@
     </div>
 </div>
 
-<!-- Include Viewer.js CSS and JS -->
-<link rel="stylesheet" href="https://unpkg.com/viewerjs/dist/viewer.min.css">
-<script src="https://unpkg.com/viewerjs/dist/viewer.min.js"></script>
-
-<script>
-    // Initialize the interactive poster
-    const image = document.getElementById('poster');
-    const viewer = new Viewer(image, {
-        inline: true,
-        viewed() {
-            viewer.zoomTo(1);
-        },
-    });
-</script>
-
     <!-- Footer -->
     <div class="footer-container">
         <div class="container">
