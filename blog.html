@@ -45,33 +45,24 @@
         </nav>
     </header>
 
-    <!-- Main content container -->
-    <div class="section-container">
+     <!-- Main content container -->
+     <div class="section-container">
         <div class="container">
-            <div class="row resume-row-label">
-                <div class="col-xs-12">
-                    <div class="template-example">
-                        <h2 class="template-title-example">FYP Journey: From Concept to Completion</h2>
-                    </div>
+            <h1 class="blog-title">Blog</h1>
+            <p class="blog-description">Explore the detailed journey of my projects, categorized by their development stages and milestones.</p>
+
+            <div class="category-container">
+                <div class="category-title" onclick="toggleCategory('fyp-dev')">FYP Development</div>
+                <div class="category-content" id="fyp-dev">
+                    <ul>
+                        <li><a href="posts/fyp-dev/my-own-algorithm-blog-post.html">Early Stages of FYP: Developing the Algorithm</a></li>
+                        <li><a href="posts/fyp-dev/fyp-blog-post.html">Middle Stages of FYP: Conception and Design</a></li>
+                        <li><a href="posts/fyp-dev/final-year-project-unfolded.html">Final Stages of FYP: Full Design and Build</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="container posts">
-            <ul>
-                <li>
-                    <a href="_posts/fyp-dev/my-own-algorithm-blog-post.html">Early Stages of FYP: Developing the Algorithm</a>
-                </li>
-                <br>
-                <br>
-                <li>
-                    <a href="_posts/fyp-dev/fyp-blog-post.html">Middle Stages of FYP: Conception and Design</a>
-                </li>
-                <br>
-                <br>
-                <li>
-                    <a href="_posts/fyp-dev/final-year-project-unfolded.html">Final Stages of FYP: Full Design and Build</a>
-                </li>
-            </ul>
+
+            <!-- Add more categories here if needed -->
         </div>
     </div>
 
