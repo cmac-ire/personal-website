@@ -8,13 +8,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v22
+        uses: amondnet/vercel-action@v25.2.0  # Updated to the latest version
         with:
           vercel_token: ${{ secrets.VERCEL_TOKEN }}
           vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
