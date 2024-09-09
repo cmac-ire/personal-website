@@ -1,16 +1,14 @@
-export default async function handler(req, res) {
-    // Check if the request method is POST
-    if (req.method === 'POST') {
-        // Process the payload from GitHub
-        const payload = req.body;
-        
-        // Log payload or handle webhook data
-        console.log('Payload received:', payload);
+// pages/api/github-webhook.js
 
-        // Example: Respond with a success message
-        res.status(200).json({ message: 'Webhook received' });
+export default async function handler(req, res) {
+    if (req.method === 'POST') {
+        // Handle the GitHub webhook payload
+        console.log('Received webhook payload:', req.body);
+
+        // Respond with a 200 status code to acknowledge receipt
+        res.status(200).json({ message: 'Webhook received successfully' });
     } else {
         // Respond with 405 Method Not Allowed for non-POST requests
-        res.status(405).json({ message: 'Method Not Allowed' });
+        res.status(405).end();
     }
 }
