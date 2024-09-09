@@ -9,6 +9,6 @@ module.exports = async (req, res) => {
         res.status(200).json({ message: 'Webhook received successfully' });
     } else {
         // Respond with 405 Method Not Allowed for non-POST requests
-        res.status(405).end();
+        res.status(405).json({ message: 'Method Not Allowed' });
     }
 };
