@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Updates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .update {
+            margin-bottom: 20px;
+        }
+        .update h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #0070f3;
+        }
+        .update p {
+            margin: 5px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub Updates</h1>
+        <div id="updates">
+            <p>Loading updates...</p>
+        </div>
+    </div>
+
+    <script>
+        async function fetchUpdates() {
+            try {
+                const response = await fetch('/api/updates'); // Update this if needed to match your actual API endpoint
+                const data = await response.json();
+                const updatesContainer = document.getElementById('updates');
+
+                if (data && data.updates && data.updates.length > 0) {
+                    updatesContainer.innerHTML = '';
+                    data.updates.forEach(update => {
+                        const updateElement = document.createElement('div');
+                        updateElement.classList.add('update');
+                        updateElement.innerHTML = `
+                            <h2>${update.repo}</h2>
+                            <p>Commit Message: ${update.message}</p>
+                            <p>Timestamp: ${new Date(update.timestamp).toLocaleString()}</p>
+                        `;
+                        updatesContainer.appendChild(updateElement);
+                    });
+                } else {
+                    updatesContainer.innerHTML = '<p>No updates available.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching updates:', error);
+                document.getElementById('updates').innerHTML = '<p>Error loading updates.</p>';
+            }
+        }
+
+        // Fetch updates when the page loads
+        fetchUpdates();
+    </script>
+</body>
+</html>
