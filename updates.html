@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Repository Updates</title>
+    <title>GitHub Updates</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
             background-color: #f9f9f9;
         }
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
             padding: 20px;
@@ -22,65 +22,28 @@
             text-align: center;
             color: #333;
         }
-        .repo-info, .repo-contents, .repo-commits {
+        .update {
             margin-bottom: 20px;
         }
-        .repo-info h2, .repo-contents h2, .repo-commits h2 {
+        .update h2 {
             margin: 0;
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: #0070f3;
         }
-        .repo-info p, .repo-contents p, .repo-commits p {
+        .update p {
             margin: 5px 0;
             color: #555;
-        }
-        .repo-contents ul, .repo-commits ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .repo-contents li, .repo-commits li {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: #f1f1f1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>GitHub Repository Updates</h1>
-
-        <div class="repo-info">
-            <h2>Repository Information</h2>
-            <p><strong>Name:</strong> {{repo.name}}</p>
-            <p><strong>Description:</strong> {{repo.description}}</p>
-            <p><strong>Stars:</strong> {{repo.stargazers_count}}</p>
-            <p><strong>Forks:</strong> {{repo.forks_count}}</p>
-            <p><strong>Last Updated:</strong> {{repo.updated_at}}</p>
-        </div>
-
-        <div class="repo-contents">
-            <h2>Repository Contents</h2>
-            <ul>
-                {{#each contents}}
-                    <li><strong>{{name}}</strong> - {{size}} bytes</li>
-                {{/each}}
-            </ul>
-        </div>
-
-        <div class="repo-commits">
-            <h2>Recent Commits</h2>
-            <ul>
-                {{#each commits}}
-                    <li>
-                        <p><strong>Message:</strong> {{commit.message}}</p>
-                        <p><strong>Author:</strong> {{commit.author.name}}</p>
-                        <p><strong>Date:</strong> {{commit.committer.date}}</p>
-                    </li>
-                {{/each}}
-            </ul>
+        <h1>GitHub Updates</h1>
+        <div id="updates">
+            <p>Loading updates...</p>
         </div>
     </div>
+
+    <script src="updates.js"></script>
 </body>
 </html>
