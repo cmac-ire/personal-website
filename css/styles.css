@@ -2,6 +2,33 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+#repositories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .repo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .repo h2 a {
+    text-decoration: none;
+    color: #2c3e50;
+  }
+  
+  .repo p {
+    margin: 10px 0;
+  }
+  
+  .repo a {
+    color: #3498db;
+    text-decoration: none;
+  }
+
 html{
     font-family:sans-serif;
     -ms-text-size-adjust:100%;
