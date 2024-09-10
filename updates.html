@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Updates</title>
+    <title>GitHub Repository Viewer</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,58 +22,99 @@
             text-align: center;
             color: #333;
         }
-        .update {
+        .repo-info, .repo-contents, .repo-commits {
             margin-bottom: 20px;
         }
-        .update h2 {
+        .repo-info h2, .repo-contents h2, .repo-commits h2 {
             margin: 0;
             font-size: 1.2em;
             color: #0070f3;
         }
-        .update p {
+        .repo-info p, .repo-contents ul, .repo-commits ul {
             margin: 5px 0;
             color: #555;
+        }
+        .repo-contents ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .repo-contents li {
+            padding: 5px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>GitHub Updates</h1>
-        <div id="updates">
-            <p>Loading updates...</p>
+        <h1>GitHub Repository Viewer</h1>
+        <div class="repo-info" id="repo-info">
+            <p>Loading repository info...</p>
+        </div>
+        <div class="repo-contents" id="repo-contents">
+            <p>Loading repository contents...</p>
+        </div>
+        <div class="repo-commits" id="repo-commits">
+            <p>Loading commit history...</p>
         </div>
     </div>
 
     <script>
-        async function fetchUpdates() {
+        async function fetchRepoData() {
             try {
-                const response = await fetch('/api/updates'); // Update this if needed to match your actual API endpoint
+                const response = await fetch('/api/repo'); // Adjust if needed
                 const data = await response.json();
-                const updatesContainer = document.getElementById('updates');
+                const repoInfo = document.getElementById('repo-info');
+                const repoContents = document.getElementById('repo-contents');
+                const repoCommits = document.getElementById('repo-commits');
 
-                if (data && data.updates && data.updates.length > 0) {
-                    updatesContainer.innerHTML = '';
-                    data.updates.forEach(update => {
-                        const updateElement = document.createElement('div');
-                        updateElement.classList.add('update');
-                        updateElement.innerHTML = `
-                            <h2>${update.repo}</h2>
-                            <p>Commit Message: ${update.message}</p>
-                            <p>Timestamp: ${new Date(update.timestamp).toLocaleString()}</p>
-                        `;
-                        updatesContainer.appendChild(updateElement);
-                    });
+                if (data && data.repo) {
+                    repoInfo.innerHTML = `
+                        <h2>${data.repo.name}</h2>
+                        <p>Description: ${data.repo.description || 'No description'}</p>
+                        <p>Stars: ${data.repo.stargazers_count}</p>
+                        <p>Forks: ${data.repo.forks_count}</p>
+                        <p>Open Issues: ${data.repo.open_issues_count}</p>
+                    `;
                 } else {
-                    updatesContainer.innerHTML = '<p>No updates available.</p>';
+                    repoInfo.innerHTML = '<p>No repository info available.</p>';
+                }
+
+                if (data && data.contents) {
+                    const contentsList = data.contents.map(item => `
+                        <li>
+                            <strong>${item.name}</strong> - ${item.type}
+                        </li>
+                    `).join('');
+                    repoContents.innerHTML = `
+                        <h2>Repository Contents</h2>
+                        <ul>${contentsList}</ul>
+                    `;
+                } else {
+                    repoContents.innerHTML = '<p>No repository contents available.</p>';
+                }
+
+                if (data && data.commits) {
+                    const commitsList = data.commits.map(commit => `
+                        <li>
+                            <strong>${commit.commit.message}</strong> - ${new Date(commit.commit.author.date).toLocaleString()}
+                        </li>
+                    `).join('');
+                    repoCommits.innerHTML = `
+                        <h2>Commit History</h2>
+                        <ul>${commitsList}</ul>
+                    `;
+                } else {
+                    repoCommits.innerHTML = '<p>No commit history available.</p>';
                 }
             } catch (error) {
-                console.error('Error fetching updates:', error);
-                document.getElementById('updates').innerHTML = '<p>Error loading updates.</p>';
+                console.error('Error fetching repository data:', error);
+                document.getElementById('repo-info').innerHTML = '<p>Error loading repository info.</p>';
+                document.getElementById('repo-contents').innerHTML = '<p>Error loading repository contents.</p>';
+                document.getElementById('repo-commits').innerHTML = '<p>Error loading commit history.</p>';
             }
         }
 
-        // Fetch updates when the page loads
-        fetchUpdates();
+        // Fetch repository data when the page loads
+        fetchRepoData();
     </script>
 </body>
 </html>
