@@ -1,34 +1,22 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+async function fetchUpdates() {
+  try {
+      const response = await fetch('/api/repo');
+      const data = await response.json();
 
-const REPO_OWNER = 'cmac-ire'; // Replace with your GitHub username
-const REPO_NAME = 'ai-home-automation-assistant'; // Replace with your repository name
-const GITHUB_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
-
-async function fetchRepoData() {
-    try {
-        const [repoData, contents, commits] = await Promise.all([
-            axios.get(GITHUB_API_URL),
-            axios.get(`${GITHUB_API_URL}/contents`),
-            axios.get(`${GITHUB_API_URL}/commits`)
-        ]);
-
-        const data = {
-            repo: repoData.data,
-            contents: contents.data,
-            commits: commits.data
-        };
-
-        const filePath = path.join(__dirname, 'latest-update.txt');
-        fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    } catch (error) {
-        console.error('Error fetching repository data:', error);
-    }
+      return {
+          repo: data.repo,
+          contents: data.contents,
+          commits: data.commits
+      };
+  } catch (error) {
+      console.error('Error fetching updates:', error);
+      return null;
+  }
 }
 
-// Fetch data every 5 minutes
-setInterval(fetchRepoData, 5 * 60 * 1000); // 5 minutes
-
-// Initial fetch
-fetchRepoData();
+// Call this function to get updates
+fetchUpdates().then(updates => {
+  if (updates) {
+      console.log('Updates:', updates);
+  }
+});
