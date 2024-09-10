@@ -1,41 +1,72 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    const repoContainer = document.getElementById('repositories');
+// Replace 'your-github-username' with your GitHub username
+const GITHUB_USERNAME = 'cmac-ire';
+const REPO_LIST_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc`;
 
-    async function fetchAndDisplayRepos() {
-        repoContainer.innerHTML = ''; // Clear the container before loading new content
+// Function to fetch and display repository details
+async function fetchAndDisplayRepos() {
+    try {
+        const response = await fetch(REPO_LIST_URL);
+        const repos = await response.json();
+        const reposContainer = document.getElementById('repositories');
 
-        try {
-            const response = await fetch('https://api.github.com/users/cmac-ire/repos');
-            const repositories = await response.json();
+        reposContainer.innerHTML = ''; // Clear previous content
 
-            if (repositories.length > 0) {
-                repositories.forEach(repo => {
-                    const repoElement = document.createElement('div');
-                    repoElement.classList.add('repo');
+        for (const repo of repos) {
+            // Create container for each repo
+            const repoBlock = document.createElement('div');
+            repoBlock.className = 'repo-block';
 
-                    repoElement.innerHTML = `
-                        <h2><a href="${repo.html_url}" target="_blank">${repo.name}</a></h2>
-                        <p>${repo.description || 'No description provided.'}</p>
-                        <p><strong>Last updated:</strong> ${new Date(repo.updated_at).toLocaleDateString()}</p>
-                        <a href="${repo.html_url}" target="_blank">View Repository</a>
-                    `;
+            // Add title and description
+            const title = document.createElement('div');
+            title.className = 'repo-title';
+            title.innerHTML = `<strong><a href="${repo.html_url}" target="_blank">${repo.name}</a></strong>`;
+            repoBlock.appendChild(title);
 
-                    repoContainer.appendChild(repoElement);
-                });
-            } else {
-                repoContainer.innerHTML = '<p>No repositories found.</p>';
-            }
-        } catch (error) {
-            console.error('Error fetching repositories:', error);
-            repoContainer.innerHTML = '<p>Error loading repositories.</p>';
+            const description = document.createElement('div');
+            description.className = 'repo-description';
+            description.innerHTML = repo.description || 'No description available';
+            repoBlock.appendChild(description);
+
+            // Fetch and add commit history
+            const commitsUrl = repo.commits_url.replace('{/sha}', '');
+            const commitsResponse = await fetch(commitsUrl);
+            const commits = await commitsResponse.json();
+
+            const commitsContainer = document.createElement('div');
+            commitsContainer.className = 'repo-commits';
+            commitsContainer.innerHTML = '<strong>Recent Commits:</strong>';
+            repoBlock.appendChild(commitsContainer);
+
+            commits.slice(0, 5).forEach(commit => {
+                const commitBlock = document.createElement('div');
+                commitBlock.className = 'commit';
+                commitBlock.innerHTML = `<strong>${commit.commit.message}</strong> - ${new Date(commit.commit.committer.date).toLocaleDateString()}`;
+                commitsContainer.appendChild(commitBlock);
+            });
+
+            // Fetch and add repository contents (tree)
+            const treeUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/git/trees/main?recursive=1`;
+            const treeResponse = await fetch(treeUrl);
+            const tree = await treeResponse.json();
+
+            const treeContainer = document.createElement('div');
+            treeContainer.className = 'tree-diagram';
+            treeContainer.innerHTML = '<strong>Repository Contents:</strong>';
+            repoBlock.appendChild(treeContainer);
+
+            tree.tree.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.innerHTML = file.path;
+                treeContainer.appendChild(fileItem);
+            });
+
+            reposContainer.appendChild(repoBlock);
         }
+    } catch (error) {
+        console.error('Error fetching repository data:', error);
+        document.getElementById('repositories').innerHTML = '<p>Error fetching repository data. Please try again later.</p>';
     }
+}
 
-    // Fetch the repositories once when the page loads
-    await fetchAndDisplayRepos();
-
-    // Poll for updates every 5 seconds (5000 ms)
-    setInterval(async () => {
-        await fetchAndDisplayRepos();
-    }, 30000); // 30000 ms = 30 seconds
-});
+// Fetch repositories on page load
+window.onload = fetchAndDisplayRepos;
