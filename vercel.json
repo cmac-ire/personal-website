@@ -12,6 +12,10 @@
     ],
     "routes": [
       {
+        "src": "/api/get-updates",
+        "dest": "api/get-updates.js"
+      },
+      {
         "src": "/api/updates",
         "dest": "api/updates.js"
       },
