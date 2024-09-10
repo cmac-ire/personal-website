@@ -5,16 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Updates</title>
     <!-- Add your existing CSS and JavaScript includes here -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- Ensure the path is correct -->
+    <link rel="icon" href="img/NFT.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>GitHub Updates</h1>
-        <div id="updates">
-            <p>Loading updates...</p>
+    <!-- Header and navigation -->
+    <header>
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html" title="01: Home">01: Home</a></li>
+                        <li><a href="resume.html" title="02: CV">02: Resume</a></li>
+                        <li><a href="blog.html" title="03: Blog">03: Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main content container -->
+    <div class="section-container">
+        <div class="container">
+            <div class="row resume-row-label">
+                <div class="col-xs-12">
+                    <div class="template-example">
+                        <h1 class="template-title-example">GitHub Updates</h1>
+                        <div id="updates">
+                            <p>Loading updates...</p>
+                        </div>
+                        <script src="/api/updates.js"></script> <!-- Ensure the path is correct -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Include your JavaScript files -->
-    <script src="/api/updates.js"></script>
+    <!-- Footer -->
+    <div class="footer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p>Inspired by free time</p>
+                    <p>© Cormac Farrelly 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
