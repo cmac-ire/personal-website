@@ -21,28 +21,39 @@
 
     <style>
         .repo-block {
-            border: 1px solid #ddd;
+            border: 1px solid #888888;
             border-radius: 8px;
             margin: 10px;
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .repo-title {
-            font-size: 1.5em;
             margin-bottom: 10px;
+        }
+        .repo-link {
+            font-size: 1.5em; /* Adjust the size as needed */
+            font-weight: bold; /* Make the text bold */
+            color: #007bff; /* Link color, adjust as needed */
+            text-decoration: none; /* Remove underline from the link */
+        }
+        .repo-link a {
+            color: inherit; /* Inherit the color from .repo-link */
+            text-decoration: none; /* Remove underline from the link */
+        }
+        .repo-link a:hover {
+            text-decoration: underline; /* Underline on hover */
         }
         .repo-description {
             font-size: 1.2em;
             margin-bottom: 10px;
         }
         .repo-commits {
-            margin-top: 10px;
+            margin-top: 20px;
         }
-        .commit {
-            border: 1px solid #eee;
-            padding: 10px;
-            margin: 5px 0;
+        .repo-contents {
+            margin-top: 20px;
         }
+       
     </style>
 </head>
 <body>
