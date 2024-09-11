@@ -14,6 +14,7 @@
     <link rel="icon" href="img/NFT.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -48,8 +49,8 @@
                         <li><a href="blog.html" title="">03: Blog</a></li>
                         <li><a href="github.html" title="">04: GitHub</a></li>
                     </ul>
-                    <div class="login-button">
-                        <a href="login.html" class="btn btn-primary">Login</a>
+                    <div class="login-button" id="loginStatus">
+                        <!-- User login status will be injected here by script -->
                     </div>
                 </div>
             </div>
@@ -141,21 +142,7 @@
         </div>
     </div>
 
-    <!-- Typed.js script for typing effect -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script>
-        var options = {
-            stringsElement: '#typed-strings',
-            typeSpeed: 80,
-            backSpeed: 50,
-            backDelay: 900,
-            startDelay: 200,
-            loop: true,
-        };
-        var typed = new Typed("#typed", options);
-    </script>
-
-            <!-- Project section -->
+    <!-- Project section -->
     <section class="project-section">
         <div class="container">
             <div class="row">
@@ -183,12 +170,13 @@
                                 <span class="fa-icon">
                                     <a href="https://www.youtube.com/channel/UC_-MUelwXJeSIVC3eH2-RUg"><i class="fa fa-youtube"></i></a>
                                 </span>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </sections>
+        </div>
+    </section>
 
     <!-- Footer -->
     <br>
@@ -197,12 +185,46 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <p>Inspired by big ideas</p>
-                    <p>This project was developed with the help of AI tools, using them as a guide, assistant, and for significant code generation. All final creative decisions and deployments reflect my own work and intentions.
-                    </p>
+                    <p>This project was developed with the help of AI tools, using them as a guide, assistant, and for significant code generation. All final creative decisions and deployments reflect my own work and intentions.</p>
                     <p>© Cormac Farrelly 2024</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('username');
+            const loginStatus = document.getElementById('loginStatus');
+            
+            if (username) {
+                loginStatus.innerHTML = `
+                    <a href="#" class="btn btn-primary">Welcome, ${username}</a>
+                    <button id="logoutButton" class="btn btn-danger">Logout</button>
+                `;
+    
+                // Logout functionality
+                document.getElementById('logoutButton').addEventListener('click', () => {
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html'; // Redirect to home page or login page
+                });
+            } else {
+                loginStatus.innerHTML = '<a href="login.html" class="btn btn-primary">Login</a>';
+            }
+        });
+        </script>
+
+        <script>
+        // Typed.js script for typing effect
+        var options = {
+            stringsElement: '#typed-strings',
+            typeSpeed: 80,
+            backSpeed: 50,
+            backDelay: 900,
+            startDelay: 200,
+            loop: true,
+        };
+        var typed = new Typed("#typed", options);
+    </script>
 </body>
 </html>

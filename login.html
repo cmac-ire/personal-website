@@ -14,6 +14,7 @@
     <link rel="icon" href="img/NFT.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -21,28 +22,33 @@
 
 </head>
 <body>
-    <!-- Header and navigation -->
-    <header>
-        <nav class="navbar navbar-fixed-top navbar-inverse">
-            <div class="container">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html" title="">01: Home</a></li>
-                        <li><a href="resume.html" title="">02: Resume</a></li>
-                        <li><a href="blog.html" title="">03: Blog</a></li>
-                        <li><a href="github.html" title="">04: GitHub</a></li>
-                    </ul>
+        <!-- Header and navigation -->
+        <header>
+            <nav class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <!-- Navbar toggle button -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Navbar content -->
+                    <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html" title="">01: Home</a></li>
+                            <li><a href="resume.html" title="">02: Resume</a></li>
+                            <li><a href="blog.html" title="">03: Blog</a></li>
+                            <li><a href="github.html" title="">04: GitHub</a></li>
+                        </ul>
+                        <div class="login-button" id="loginStatus">
+                            <!-- User login status will be injected here by script -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
     <!-- Main content container -->
     <div class="section-container">
@@ -94,6 +100,28 @@
         </div>
     </div>
 
-    <script src="js/login.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('username');
+            const loginStatus = document.getElementById('loginStatus');
+            
+            if (username) {
+                loginStatus.innerHTML = `
+                    <a href="#" class="btn btn-primary">Welcome, ${username}</a>
+                    <button id="logoutButton" class="btn btn-danger">Logout</button>
+                `;
+    
+                // Logout functionality
+                document.getElementById('logoutButton').addEventListener('click', () => {
+                    localStorage.removeItem('username');
+                    window.location.href = 'index.html'; // Redirect to home page or login page
+                });
+            } else {
+                loginStatus.innerHTML = '<a href="login.html" class="btn btn-primary">Login</a>';
+            }
+        });
+        </script>
+
+    <script src="login.js"></script>
 </body>
 </html>

@@ -2,7 +2,18 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-/* Position the login button on the top right */
+
+#user-info {
+    position: fixed; /* Use fixed positioning */
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999; /* Ensure it stays on top */
+}
+
 .login-button {
     position: absolute;
     top: 15px; /* Adjust as needed */
