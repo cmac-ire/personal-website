@@ -75,5 +75,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Poll for updates every 5 minutes (300000 ms)
     setInterval(async () => {
         await fetchAndDisplayRepos();
-    }, 8000); // 300000 ms = 5 minutes
+    }, 80000); // 300000 ms = 5 minutes
 });
