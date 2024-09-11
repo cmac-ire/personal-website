@@ -35,24 +35,13 @@
             font-size: 1.2em;
             margin-bottom: 10px;
         }
-        .repo-commits, .repo-files {
+        .repo-commits {
             margin-top: 10px;
         }
-        .commit, .file {
+        .commit {
             border: 1px solid #eee;
             padding: 10px;
             margin: 5px 0;
-        }
-        .file-tree {
-            list-style: none;
-            padding-left: 20px;
-        }
-        .file-tree li {
-            margin: 5px 0;
-        }
-        .file-tree li::before {
-            content: '📄';
-            margin-right: 5px;
         }
     </style>
 </head>
@@ -88,41 +77,15 @@
                     <div class="template-example">
                         <h1 class="template-title-example">My GitHub Repositories</h1>
                         <div id="repositories">
-                            <!-- Example repository block -->
-                            <div class="repo-block">
-                                <h2 class="repo-title">ai-home-automation-assistant</h2>
-                                <p class="repo-description">A Python-based voice assistant that controls smart home devices using Home Assistant.</p>
-                                
-                                <div class="repo-commits">
-                                    <h3>Recent Commits</h3>
-                                    <div class="commit">
-                                        <p><strong>Message:</strong> changes</p>
-                                        <p><strong>Date:</strong> 10/9/2024</p>
-                                        <p><strong>Author:</strong> Cormac Farrelly</p>
-                                    </div>
-                                    <!-- Add more commits here -->
-                                </div>
-
-                                <div class="repo-files">
-                                    <h3>Repository Files</h3>
-                                    <ul class="file-tree">
-                                        <li>.github/workflows - Sep 10, 2024</li>
-                                        <li>src - Sep 10, 2024</li>
-                                        <li>.gitignore - Sep 9, 2024</li>
-                                        <li>LICENSE - Sep 9, 2024</li>
-                                        <li>README.md - Sep 9, 2024</li>
-                                        <li>hello_peach.txt - Sep 10, 2024</li>
-                                        <li>requirements.txt - Sep 10, 2024</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Repeat above block for other repositories -->
+                            <!-- Repository data will be injected here -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="js/updates.js"></script>
 
     <div class="footer-container">
         <div class="container">
