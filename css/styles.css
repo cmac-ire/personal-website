@@ -2,6 +2,64 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/* Position the login button on the top right */
+.login-button {
+    position: absolute;
+    top: 15px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+}
+
+.login-button .btn {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: white;
+}
+
+.login-button .btn:hover {
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+
+
+.login-container, .register-container {
+    margin: 20px;
+}
+
+.login-container h1, .register-container h2 {
+    margin-top: 0;
+}
+
+.login-container form, .register-container form {
+    margin-bottom: 20px;
+}
+
+.login-container label, .register-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-container input, .register-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.login-container button, .register-container button {
+    padding: 10px 20px;
+    background-color: #5bc0de;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.login-container button:hover, .register-container button:hover {
+    background-color: #31b0d5;
+}
+
+#message {
+    margin-top: 10px;
+}
+
 #repositories {
     display: flex;
     flex-direction: column;
