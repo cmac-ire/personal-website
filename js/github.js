@@ -75,5 +75,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     setInterval(async () => {
         await fetchAndDisplayRepos();
-    }, 80000);
+    }, 300000);
 });
