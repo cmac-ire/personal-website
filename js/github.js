@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const repoContainer = document.getElementById('repositories');
 
     async function fetchAndDisplayRepos() {
-        repoContainer.innerHTML = ''; // Clear the container before loading new content
+        repoContainer.innerHTML = ''; 
 
         try {
             const response = await fetch('https://api.github.com/users/cmac-ire/repos');
@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const repoElement = document.createElement('div');
                     repoElement.classList.add('repo-block');
 
-                    // Fetch the most recent commit
+                   
                     const commitsResponse = await fetch(`https://api.github.com/repos/cmac-ire/${repo.name}/commits?per_page=1`);
                     const commits = await commitsResponse.json();
-                    const recentCommit = commits[0]; // Get the most recent commit
+                    const recentCommit = commits[0]; 
 
-                    // Fetch repository contents
+                   
                     const contentsResponse = await fetch(`https://api.github.com/repos/cmac-ire/${repo.name}/contents`);
                     const contents = await contentsResponse.json();
 
-                    // Generate commit HTML
+                 
                     let commitHtml = '<div class="repo-commits">';
                     if (recentCommit) {
                         commitHtml += `
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                     commitHtml += '</div>';
 
-                    // Generate contents HTML
+                
                     let contentsHtml = '<div class="repo-contents">';
                     contents.forEach(file => {
                         contentsHtml += `
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     });
                     contentsHtml += '</div>';
 
-                    // Append to the repo element
+                   
                     repoElement.innerHTML = `
                         <div class="repo-title">
                             <h1 class="repo-link"><a href="${repo.html_url}" target="_blank">${repo.name}</a></h1>
@@ -69,11 +69,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Fetch the repositories once when the page load
+   
     await fetchAndDisplayRepos();
 
-    // Poll for updates every 5 minutes (300000 ms)
+    
     setInterval(async () => {
         await fetchAndDisplayRepos();
-    }, 80000); // 300000 ms = 5 minutes
+    }, 80000);
 });
