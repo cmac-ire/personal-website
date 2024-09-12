@@ -15,27 +15,20 @@
 }
 
 .login-button {
-    position: fixed; /* Use fixed positioning */
-    top: 10px; /* Adjust as needed */
-    left: 10px; /* Position on the left side */
-    z-index: 1000; /* Ensure it stays on top of other content */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1050; /* Ensure it's on top of other elements */
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
 .login-button .btn {
     background-color: #5bc0de;
     border-color: #46b8da;
     color: white;
-    padding: 10px 20px;
-    text-decoration: none; /* Remove underline from link */
-    border-radius: 5px; /* Rounded corners */
 }
 
-@media (max-width: 767px) {
-    .login-button {
-        top: 10px; /* Ensure it is visible on smaller screens */
-        left: 10px; /* Adjust for smaller screens if needed */
-    }
-}
 .login-button .btn:hover {
     background-color: #31b0d5;
     border-color: #269abc;
