@@ -2894,7 +2894,7 @@ tbody.collapse.in{
 .navbar-toggle .icon-bar+.icon-bar{
     margin-top:4px
 }
-@media (min-width:768px){
+@media (min-width:200px){
     .navbar-toggle{
         display:none
     }
