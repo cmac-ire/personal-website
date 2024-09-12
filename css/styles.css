@@ -16,8 +16,8 @@
 
 .login-button {
     position: absolute;
-    top: 70px; /* Adjust as needed */
-    left: 15px; /* Adjust as needed */
+    top: 15px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
 }
 
 .login-button .btn {
