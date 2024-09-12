@@ -1,4 +1,3 @@
-// Function to perform the health check
 async function checkServerHealth() {
     try {
         const response = await fetch('https://bittersweet-bald-haircut.glitch.me/health');
@@ -13,8 +12,6 @@ async function checkServerHealth() {
     }
 }
 
-// Run the health check every 5 minutes (300000 milliseconds)
-setInterval(checkServerHealth, 300000);
+setInterval(checkServerHealth, 10000);
 
-// Run an initial check when the script loads
 checkServerHealth();
