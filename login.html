@@ -19,36 +19,35 @@
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
-
 </head>
 <body>
-        <!-- Header and navigation -->
-        <header>
-            <nav class="navbar navbar-fixed-top navbar-inverse">
-                <div class="container">
-                    <!-- Navbar toggle button -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Navbar content -->
-                    <div class="collapse navbar-collapse" id="navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.html" title="">01: Home</a></li>
-                            <li><a href="resume.html" title="">02: Resume</a></li>
-                            <li><a href="blog.html" title="">03: Blog</a></li>
-                            <li><a href="github.html" title="">04: GitHub</a></li>
-                        </ul>
-                        <div class="login-button" id="loginStatus">
-                            <!-- User login status will be injected here by script -->
-                        </div>
+    <!-- Header and navigation -->
+    <header>
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <!-- Navbar toggle button -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Navbar content -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html" title="">01: Home</a></li>
+                        <li><a href="resume.html" title="">02: Resume</a></li>
+                        <li><a href="blog.html" title="">03: Blog</a></li>
+                        <li><a href="github.html" title="">04: GitHub</a></li>
+                    </ul>
+                    <div class="login-button" id="loginStatus">
+                        <!-- User login status will be injected here by script -->
                     </div>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
+    </header>
 
     <!-- Main content container -->
     <div class="section-container">
@@ -71,7 +70,7 @@
                         <!-- Registration Form -->
                         <h1 class="template-title-example">Register</h1>
                         <div class="register-container">
-                           <form id="registerForm">
+                            <form id="registerForm">
                                 <label for="new_username">Username:</label>
                                 <input type="text" id="new_username" name="username" required>
                                 <label for="new_password">Password:</label>
@@ -104,13 +103,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const username = localStorage.getItem('username');
             const loginStatus = document.getElementById('loginStatus');
-            
+
+            // Check if the user is logged in (based on LocalStorage)
             if (username) {
                 loginStatus.innerHTML = `
                     <a href="#" class="btn btn-primary">Welcome, ${username}</a>
                     <button id="logoutButton" class="btn btn-danger">Logout</button>
                 `;
-    
+
                 // Logout functionality
                 document.getElementById('logoutButton').addEventListener('click', () => {
                     localStorage.removeItem('username');
@@ -120,8 +120,59 @@
                 loginStatus.innerHTML = '<a href="login.html" class="btn btn-primary">Login</a>';
             }
         });
-        </script>
 
-    <script src="login.js"></script>
+        // Function to handle login submission
+        async function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('https://bittersweet-bald-haircut.glitch.me/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Store the username (or token) in LocalStorage on successful login
+                    localStorage.setItem('username', username);
+                    alert('Login successful!');
+                    window.location.href = 'index.html'; // Redirect to homepage after login
+                } else {
+                    alert('Login failed: ' + result.message);
+                }
+            } catch (error) {
+                alert('Error during login: ' + error.message);
+            }
+        }
+
+        // Function to handle registration submission
+        document.getElementById('registerForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const username = document.getElementById('new_username').value;
+            const password = document.getElementById('new_password').value;
+
+            try {
+                const response = await fetch('https://bittersweet-bald-haircut.glitch.me/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                document.getElementById('message').textContent = data.message;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        // Attach the login function to the form submission
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+    </script>
 </body>
 </html>
