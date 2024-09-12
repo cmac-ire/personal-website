@@ -61,17 +61,17 @@
         <div class="container posts">
             <ul>
                 <li>
-                    <a href="_posts/fyp-dev/my-own-algorithm-blog-post.html">Early Stages of FYP: Developing the Algorithm</a>
+                    <a href="_posts/fyp-dev/my-own-algorithm-blog-post">Early Stages of FYP: Developing the Algorithm</a>
                 </li>
                 <br>
                 <br>
                 <li>
-                    <a href="_posts/fyp-dev/fyp-blog-post.html">Middle Stages of FYP: Conception and Design</a>
+                    <a href="_posts/fyp-dev/fyp-blog-post">Middle Stages of FYP: Conception and Design</a>
                 </li>
                 <br>
                 <br>
                 <li>
-                    <a href="_posts/fyp-dev/final-year-project-unfolded.html">Final Stages of FYP: Full Design and Build</a>
+                    <a href="_posts/fyp-dev/final-year-project-unfolded">Final Stages of FYP: Full Design and Build</a>
                 </li>
             </ul>
         </div>
@@ -91,10 +91,10 @@
                 // Logout functionality
                 document.getElementById('logoutButton').addEventListener('click', () => {
                     localStorage.removeItem('username');
-                    window.location.href = 'index.html'; // Redirect to home page or login page
+                    window.location.href = 'index'; // Redirect to home page or login page
                 });
             } else {
-                loginStatus.innerHTML = '<a href="login.html" class="btn btn-primary">Login</a>';
+                loginStatus.innerHTML = '<a href="login" class="btn btn-primary">Login</a>';
             }
         });
         </script>

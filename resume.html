@@ -134,10 +134,10 @@
                 // Logout functionality
                 document.getElementById('logoutButton').addEventListener('click', () => {
                     localStorage.removeItem('username');
-                    window.location.href = 'index.html'; // Redirect to home page or login page
+                    window.location.href = 'index'; // Redirect to home page or login page
                 });
             } else {
-                loginStatus.innerHTML = '<a href="login.html" class="btn btn-primary">Login</a>';
+                loginStatus.innerHTML = '<a href="login" class="btn btn-primary">Login</a>';
             }
         });
         </script>

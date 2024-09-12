@@ -111,10 +111,10 @@
                 // Logout functionality
                 document.getElementById('logoutButton').addEventListener('click', () => {
                     localStorage.removeItem('username');
-                    window.location.href = 'index.html'; // Redirect to home page or login page
+                    window.location.href = 'index'; // Redirect to home page or login page
                 });
             } else {
-                loginStatus.innerHTML = '<a href="login.html" class="btn btn-primary">Login</a>';
+                loginStatus.innerHTML = '<a href="login" class="btn btn-primary">Login</a>';
             }
         });
 
@@ -140,7 +140,7 @@
                     // Store the username (or token) in LocalStorage on successful login
                     localStorage.setItem('username', username);
                     alert('Login successful!');
-                    window.location.href = 'index.html'; // Redirect to homepage after login
+                    window.location.href = 'index'; // Redirect to homepage after login
                 } else {
                     alert('Login failed: ' + result.message);
                 }
