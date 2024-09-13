@@ -14,7 +14,7 @@
     <link rel="icon" href="img/NFT.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -70,9 +70,24 @@
                             <form id="registerForm">
                                 <label for="new_username">Username:</label>
                                 <input type="text" id="new_username" name="username" required>
+                            
+                                <label for="new_email">Email:</label>
+                                <input type="email" id="new_email" name="email" required>
+                            
                                 <label for="new_password">Password:</label>
                                 <input type="password" id="new_password" name="password" required>
+                            
                                 <button type="submit">Register</button>
+                            </form>
+                        </div>
+
+                        <!-- Update Email Form -->
+                        <h1 class="template-title-example">Update Email</h1>
+                        <div class="update-email-container">
+                            <form id="updateEmailForm">
+                                <label for="newEmail">New Email:</label>
+                                <input type="email" id="newEmail" name="newEmail" required>
+                                <button type="submit">Update Email</button>
                             </form>
                         </div>
 
@@ -96,28 +111,8 @@
         </div>
     </div>
 
+    <!-- JavaScript Section -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const username = localStorage.getItem('username');
-            const loginStatus = document.getElementById('loginStatus');
-
-            // Check if the user is logged in (based on LocalStorage)
-            if (username) {
-                loginStatus.innerHTML = `
-                    <a href="#" class="btn btn-primary">Welcome, ${username}</a>
-                    <button id="logoutButton" class="btn btn-danger">Logout</button>
-                `;
-
-                // Logout functionality
-                document.getElementById('logoutButton').addEventListener('click', () => {
-                    localStorage.removeItem('username');
-                    window.location.href = 'index'; // Redirect to home page or login page
-                });
-            } else {
-                loginStatus.innerHTML = '<a href="login" class="btn btn-primary">Login</a>';
-            }
-        });
-
         // Function to handle login submission
         async function handleLogin(event) {
             event.preventDefault(); // Prevent form submission
@@ -140,7 +135,7 @@
                     // Store the username (or token) in LocalStorage on successful login
                     localStorage.setItem('username', username);
                     alert('Login successful!');
-                    window.location.href = 'index'; // Redirect to homepage after login
+                    window.location.href = '/index'; // Redirect to homepage after login
                 } else {
                     alert('Login failed: ' + result.message);
                 }
@@ -153,13 +148,33 @@
         document.getElementById('registerForm').addEventListener('submit', async (event) => {
             event.preventDefault();
             const username = document.getElementById('new_username').value;
+            const email = document.getElementById('new_email').value; // Capture the email
             const password = document.getElementById('new_password').value;
 
             try {
                 const response = await fetch('https://bittersweet-bald-haircut.glitch.me/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                    body: JSON.stringify({ username, email, password }) // Include email in the request body
+                });
+                const data = await response.json();
+                document.getElementById('message').textContent = data.message;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        // Function to handle email update submission
+        document.getElementById('updateEmailForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const newEmail = document.getElementById('newEmail').value;
+            const username = localStorage.getItem('username');  // Retrieve the username from LocalStorage after login
+
+            try {
+                const response = await fetch('https://bittersweet-bald-haircut.glitch.me/update-email', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, newEmail })
                 });
                 const data = await response.json();
                 document.getElementById('message').textContent = data.message;
