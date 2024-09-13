@@ -15,7 +15,7 @@
 }
 
 .login-button {
-    position: fixed;
+    position: relative;
     top: 10px;
     left: 10px;
     z-index: 1050; /* Ensure it's on top of other elements */
