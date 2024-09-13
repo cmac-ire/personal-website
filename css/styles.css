@@ -3,26 +3,44 @@
 /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+/* Default styles for desktop and larger screens */
+/* Default styles for desktop */
 #user-info {
-    position: fixed;
+    position: fixed; /* Use fixed positioning */
     top: 10px;
     right: 10px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
     color: white;
     padding: 10px;
     border-radius: 5px;
     z-index: 1000; /* Ensure it stays on top */
+    pointer-events: auto; /* Ensure it's clickable */
 }
 
 .login-button {
     position: fixed;
     top: 10px;
     left: 10px;
-    z-index: 1001; /* Ensure it stays on top of #user-info */
+    z-index: 1030; /* Ensure it's on top of #user-info */
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer; /* Ensure cursor changes to pointer on hover */
+    pointer-events: auto; /* Ensure it's clickable */
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    #user-info {
+        z-index: 1000; /* Ensure proper stacking order */
+    }
+
+    .login-button {
+        z-index: 1001; /* Ensure it's on top of #user-info */
+    }
+}
+
+
+
 .login-button .btn {
     background-color: #5bc0de;
     border-color: #46b8da;
