@@ -4,10 +4,10 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 #user-info {
-    position: fixed; /* Use fixed positioning */
+    position: fixed;
     top: 10px;
     right: 10px;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -18,11 +18,11 @@
     position: fixed;
     top: 10px;
     left: 10px;
-    z-index: 1000; /* Ensure it's on top of other elements */
+    z-index: 1001; /* Ensure it stays on top of #user-info */
     border-radius: 5px;
     padding: 10px 20px;
+    cursor: pointer; /* Ensure cursor changes to pointer on hover */
 }
-
 .login-button .btn {
     background-color: #5bc0de;
     border-color: #46b8da;
