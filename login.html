@@ -58,15 +58,21 @@
                     <div class="template-example">
                         <h1 class="template-title-example">Login</h1>
                         <p class="category-description">Create an account or log into an existing one.</p>
+                        
+                        <!-- Login Form -->
                         <div class="login-container">
                             <form id="loginForm">
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" name="username" required>
-                                <label for="password">Password:</label>
-                                <input type="password" id="password" name="password" required>
+                                <label for="loginUsername">Username:</label>
+                                <input type="text" id="loginUsername" name="username" required>
+
+                                <label for="loginPassword">Password:</label>
+                                <input type="password" id="loginPassword" name="password" required>
+                                
                                 <button type="submit">Login</button>
+
                                 <!-- Forgot Password Link -->
                                 <p><a href="/reset-password.html" id="forgotPasswordLink">Forgot your password?</a></p>
+                                <p id="loginMessage"></p>
                             </form>
                         </div>
 
@@ -74,20 +80,20 @@
                         <h1 class="template-title-example">Register</h1>
                         <div class="register-container">
                             <form id="registerForm">
-                                <label for="new_username">Username:</label>
-                                <input type="text" id="new_username" name="username" required>
-                            
-                                <label for="new_email">Email:</label>
-                                <input type="email" id="new_email" name="email" required>
-                            
-                                <label for="new_password">Password:</label>
-                                <input type="password" id="new_password" name="password" required>
-                            
+                                <label for="registerUsername">Username:</label>
+                                <input type="text" id="registerUsername" name="username" required>
+
+                                <label for="registerEmail">Email:</label>
+                                <input type="email" id="registerEmail" name="email" required>
+
+                                <label for="registerPassword">Password:</label>
+                                <input type="password" id="registerPassword" name="password" required>
+                                
                                 <button type="submit">Register</button>
+                                <p id="registerMessage"></p>
                             </form>
                         </div>
 
-                        <p id="message"></p>
                     </div>
                 </div>
             </div>
