@@ -71,8 +71,28 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 });
 
 // Handle forgot password
-document.getElementById('forgotPasswordLink').addEventListener('click', (event) => {
+document.getElementById('forgotPasswordLink').addEventListener('click', async (event) => {
     event.preventDefault();
-    // Redirect to a password reset page
-    window.location.href = '/reset-password.html'; // Adjust to your actual password reset URL
+    const email = prompt("Enter your email address:");
+
+    if (email) {
+        try {
+            const response = await fetch('/forgot-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Password reset link has been sent to your email.');
+            } else {
+                alert(data.message || 'Failed to send password reset link.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while sending the password reset link.');
+        }
+    }
 });
