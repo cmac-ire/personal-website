@@ -11,14 +11,14 @@
     color: white;
     padding: 10px;
     border-radius: 5px;
-    z-index: 1000; /* Ensure it stays on top */
+    
 }
 
 .login-button {
     position: fixed;
     top: 10px;
     left: 10px;
-    z-index: 1000; /* Ensure it's on top of other elements */
+   
     border-radius: 5px;
     padding: 10px 20px;
 }
