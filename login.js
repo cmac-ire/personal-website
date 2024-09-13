@@ -66,3 +66,10 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         document.getElementById('message').textContent = 'An error occurred during login. Please try again.';
     }
 });
+
+// Handle forgot password
+document.getElementById('forgotPasswordLink').addEventListener('click', (event) => {
+    event.preventDefault();
+    // Redirect to a password reset page or show a modal
+    window.location.href = '/forgot-password'; // Adjust to your actual password reset URL
+});
