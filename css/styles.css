@@ -2738,7 +2738,7 @@ tbody.collapse.in{
     border-top-left-radius:0
 }
 .navbar{
-    position:fixed;
+    position:relative;
     min-height:20px;
     margin-bottom:19px;
     border:1px solid transparent
