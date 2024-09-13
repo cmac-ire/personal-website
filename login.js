@@ -1,7 +1,7 @@
 // Handle registration
 document.getElementById('registerForm').addEventListener('submit', async (event) => {
     event.preventDefault();
-    
+
     // Get form values
     const username = document.getElementById('registerUsername').value;
     const email = document.getElementById('registerEmail').value;
@@ -39,8 +39,8 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     event.preventDefault();
 
     // Get form values
-    const username = document.getElementById('loginUsername').value;
-    const password = document.getElementById('loginPassword').value;
+    const username = document.getElementById('username').value; // Ensure this matches your HTML
+    const password = document.getElementById('password').value; // Ensure this matches your HTML
 
     try {
         // Make a POST request to the login endpoint
