@@ -69,10 +69,3 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         document.getElementById('loginMessage').style.color = 'red';
     }
 });
-
-// Handle forgot password
-document.getElementById('forgotPasswordLink').addEventListener('click', (event) => {
-    event.preventDefault();
-    // Redirect to a password reset page
-    window.location.href = '/reset-password.html'; // Adjust to your actual password reset URL
-});
